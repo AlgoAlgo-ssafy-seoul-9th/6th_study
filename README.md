@@ -188,7 +188,29 @@ def solution(fees, records):
 ### [서희](./햄버거%20분배/서희.py)
 
 ```py
+'''
+31256KB	92ms
+'''
 
+
+N, K = input().split()
+String = list(input())
+
+
+N = int(N)
+K = int(K)
+
+cnt = 0
+for i in range(N):
+    if String[i] == 'P':
+        for j in range(i-K, i+K+1):
+            if j >= 0 and j < N:
+                if String[j] == 'H':
+                    String[j] = 0
+                    cnt += 1
+                    break
+
+print(cnt)
 ```
 
 ### [성구](./햄버거%20분배/성구.py)
