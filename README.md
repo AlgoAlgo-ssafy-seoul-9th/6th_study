@@ -126,7 +126,29 @@ print(cnt)
 ### [서희](./햄버거%20분배/서희.py)
 
 ```py
+'''
+31256KB	92ms
+'''
 
+
+N, K = input().split()
+String = list(input())
+
+
+N = int(N)
+K = int(K)
+
+cnt = 0
+for i in range(N):
+    if String[i] == 'P':
+        for j in range(i-K, i+K+1):
+            if j >= 0 and j < N:
+                if String[j] == 'H':
+                    String[j] = 0
+                    cnt += 1
+                    break
+
+print(cnt)
 ```
 
 ### [성구](./햄버거%20분배/성구.py)
@@ -236,74 +258,48 @@ print(len(full))
 ### [성구](./동전%20분배/성구.py)
 
 ```py
+# 1943 동전 분배
+import sys
+
+input = sys.stdin.readline
+
+
+for _ in range(3):
+    # define
+    coins = {}
+    total = 0
+    # input
+    N = int(input())
+    for i in range(N):
+        coin, cnt = map(int, input().split())
+        coins[coin] = cnt
+        # 총 금액 산정
+        total += coin * cnt
+    # 총 금액이 홀수이면 무조건 불가능
+    if total % 2:
+        print(0)
+    else:
+        # 목표 금액으로 바꾸기
+        total //= 2
+        # index를 목표금액으로 갖는 배열 만듦
+        dp = [0] * (total + 1)
+        # 목표가 0 이면 무조건 만들 수 있으므로 1
+        dp[0] = 1
+        # 변화 저장용 (직접 변환하면 바꾼 index도 if문에서 걸려 모두 1이 됨)
+        tmp = [*dp]
+        for key, val in coins.items():
+            for idx in range(total + 1):
+                if dp[idx]:
+                    for index in range(
+                        idx + key, min(idx + key * val + 1, total + 1), key
+                    ):
+                        tmp[index] = 1
+            dp = [*tmp]
+        # 목표금액이 만들 수 있는지 value로 들어가 있음
+        print(dp[total])
 
 ```
 
 </div>
 </details>
 <br><br><br>
-<<<<<<< HEAD
- 
-## [햄버거 분배](./햄버거%20분배/)
-
-<details>
-<summary>접기/펼치기</summary>
-<div markdown="1">
-
-### [민웅](./햄버거%20분배/민웅.py)
-
-```py
-
-```
-
-### [병국](./햄버거%20분배/병국.py)
-
-```py
-
-```
-
-### [상미](./햄버거%20분배/상미.py)
-
-```py
-
-```
-
-### [서희](./햄버거%20분배/서희.py)
-
-```py
-'''
-31256KB	92ms
-'''
-
-
-N, K = input().split()
-String = list(input())
-
-
-N = int(N)
-K = int(K)
-
-cnt = 0
-for i in range(N):
-    if String[i] == 'P':
-        for j in range(i-K, i+K+1):
-            if j >= 0 and j < N:
-                if String[j] == 'H':
-                    String[j] = 0
-                    cnt += 1
-                    break
-
-print(cnt)
-```
-
-### [성구](./햄버거%20분배/성구.py)
-
-```py
-
-```
-
-</div>
-</details>
-<br><br><br>
-=======
->>>>>>> f2cdd676ec25a21957e64b0e18bb019ab438983f
