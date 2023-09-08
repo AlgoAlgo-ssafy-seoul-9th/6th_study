@@ -218,7 +218,39 @@ print(len(full))
 ### [성구](./A와%20B%202/성구.py)
 
 ```py
+import sys
 
+input = sys.stdin.readline
+
+# input
+S = input().strip()
+T = input().strip()
+
+
+# DFS
+def dfs(t):
+    stack = [t]
+    # T -> S 갈수 있는가?
+    while stack:
+        s = stack.pop()
+        # 길이가 같으면 확인
+        if len(s) == len(S):
+            # T -> S 가능 하면 1
+            if s == S:
+                return 1
+            # 다르면 다음 거 확인
+            continue
+        # 마지막이 A면 빼줌
+        if s[-1] == "A":
+            stack.append(s[:-1])
+        # 처음이 B이면 뒤집어서 B뺌
+        if s[0] == "B":
+            stack.append(s[::-1][:-1])
+    # 모두 확인했는데 안되면 0
+    return 0
+
+
+print(dfs(T))
 ```
 
 </div>
