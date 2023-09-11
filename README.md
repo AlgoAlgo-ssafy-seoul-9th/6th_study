@@ -434,9 +434,14 @@ for _ in range(3):
                         idx + key, min(idx + key * val + 1, total + 1), key
                     ):
                         tmp[index] = 1
+                if dp[total]:
+                    break
             dp = [*tmp]
+            if dp[total]:
+                break
         # 목표금액이 만들 수 있는지 value로 들어가 있음
         print(dp[total])
+
 
 ```
 

@@ -38,3 +38,11 @@ for tc in range(3):
             break
 
     print(check[-1])
+
+'''
+예외 케이스
+3
+1 1
+2 1
+4 1
+'''
