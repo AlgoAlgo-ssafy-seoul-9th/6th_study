@@ -231,6 +231,33 @@ print(len(full))
 ### [민웅](./A와%20B%202/민웅.py)
 
 ```py
+# 12919_A와B2_A and B 2
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+S = input().strip()
+T = input().strip()
+
+idx = len(S)
+q = deque()
+q.append(T)
+ans = 0
+while q:
+    temp = q.popleft()
+    if temp == S:
+        ans = 1
+        break
+
+    if temp[-1] == 'A':
+        if temp[:-1] != '':
+            q.append(temp[:-1])
+    if temp[0] == 'B':
+        temp = temp[::-1]
+        if temp[:-1] != '':
+            q.append(temp[:-1])
+
+print(ans)
 
 ```
 
@@ -523,9 +550,14 @@ for _ in range(3):
                         idx + key, min(idx + key * val + 1, total + 1), key
                     ):
                         tmp[index] = 1
+                if dp[total]:
+                    break
             dp = [*tmp]
+            if dp[total]:
+                break
         # 목표금액이 만들 수 있는지 value로 들어가 있음
         print(dp[total])
+
 
 ```
 
