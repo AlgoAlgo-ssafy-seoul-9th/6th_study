@@ -356,7 +356,7 @@ print(dfs(T))
 ### [민웅](./동전%20분배/민웅.py)
 
 ```py
-# 틀린곳 모르겠음
+# 갓성구
 # 1943_동전분배_coin-distribution
 import sys
 input = sys.stdin.readline
@@ -372,7 +372,7 @@ for tc in range(3):
         coins.append([c, cnt])
     if total%2 == 1:
         print(0)
-        break
+        continue
     coins.sort(key=lambda x:-x[0])
     # print(coins)
 
